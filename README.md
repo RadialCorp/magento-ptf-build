@@ -6,25 +6,14 @@
 
 > The Radial Payments, Tax, and Fraud (PTF) extension is installed with [Composer](https://getcomposer.org/) and deployed to your Magento project directory with [Magento Composer Installer](https://github.com/Cotya/magento-composer-installer).
 
-> To install the last stable release it is best to create a composer.json file containing the following: 
+> To install the last stable release run the following command from a **non-public directory** on your base Magento installation: 
+
+`composer require radial/magento-ptf-build`
+
+> The output should look something like this:
 
 <pre>
-{ 
-   "require": { 
-     "radial/magento-payments-creditcard" : "^1.0" 
-   }, 
-   "extra": { 
-     "magento-root-dir": ".", 
-     "magento-deploystrategy": "copy", 
-     "magento-force": true 
-   } 
-} 
-</pre>
-
-> Then run composer installer while in the directory that is your base Magento installation - please note that it is strongly recommended that this is done in a non-production environment for thorough testing before production deployment and production deployment should be done with a tagged set of files - the output should look something like this:
-
-<pre>
-[user@sandbox02 magento]$ /...path_to_composer.../composer.phar install
+./composer.json has been created
 Loading composer repositories with package information
 Updating dependencies (including require-dev)
   - Installing psr/log (1.0.0)
@@ -38,13 +27,10 @@ Updating dependencies (including require-dev)
 
 ... more output ...
 
-magento-hackathon/magento-composer-installer suggests installing colinmollenhour/modman (*)
-magento-hackathon/magento-composer-installer suggests installing theseer/autoload (~1.14)
-Package videlalvaro/php-amqplib is abandoned, you should avoid using it. Use php-amqplib/php-amqplib instead.
 Writing lock file
 Generating autoload files
-./app/Mage.php was already patched
-[user@sandbox02 magento]$ 
+please define your magento root dir [root]
+Autoloader patch to root/app/Mage.php was applied successfully
 </pre>
 
 > You will be prompted to define your Magento root, you should provide the root of your Magento installation.
