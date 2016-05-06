@@ -6,9 +6,11 @@
 
 > The Radial Payments, Tax, and Fraud (PTF) extension is installed with [Composer](https://getcomposer.org/) and deployed to your Magento project directory with [Magento Composer Installer](https://github.com/Cotya/magento-composer-installer).
 
-> To install the last stable release run the following command from a **non-public directory** on your base Magento installation: 
+> To install the last stable release copy the latest [composer.json](composer.json) file into a **non-public directory** on your base Magento installation. 
 
-`composer require radial/magento-ptf-build`
+> Now run the following command:
+
+`composer install`
 
 > The output should look something like this:
 
