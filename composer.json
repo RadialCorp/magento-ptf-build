@@ -1,4 +1,5 @@
 {
+  "name": "radial/magento-ptf-build",
   "require": {
     "radial/magento-payments-creditcard" : "1.0.0"
   },
