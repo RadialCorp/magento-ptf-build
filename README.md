@@ -6,7 +6,9 @@
 
 > The Radial Payments, Tax, and Fraud (PTF) extension is installed with [Composer](https://getcomposer.org/) and deployed to your Magento project directory with [Magento Composer Installer](https://github.com/Cotya/magento-composer-installer).
 
-> To install the last stable release copy the [composer.json](composer.json) file into a **non-public directory** on your base Magento installation. 
+> To install the last stable release copy the [composer.json](composer.json) file into the **base Magento installation directory** - it is strongly recommended to do this in a non-production environment, test the results, and then use a tagged file repository to make it live. The file may be curl'ed to the server via:
+
+`curl https://raw.githubusercontent.com/RadialCorp/magento-ptf-build/master/composer.json -o composer.json`
 
 > Now run the following command:
 
@@ -57,6 +59,33 @@ Autoloader patch to root/app/Mage.php was applied successfully
 
 > Please remember to cache-clear after setting up data in Magento admin...
 
+## Upgrading Radial Extensions
+
+Upgrades to Radial Extensions is also done via composer to help ensure that *all* upgrade dependencies are accounted for.  The recommended way to take an update is to grab the latest released version of composer.json (see above) and then run composer update:
+
+<pre>
+curl https://raw.githubusercontent.com/RadialCorp/magento-ptf-build/1.0.2/composer.json -o composer.json
+
+composer.phar update
+you may want to add the packages.magento.com repository to composer.
+add it with: composer.phar config -g repositories.magento composer https?://packages.magento.com
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+  - Installing radial/magento-payments-transactions (1.0.3)
+    Downloading: 100%
+
+  - Removing radial/magento-payments-creditcard (1.0.0)
+  - Installing radial/magento-payments-creditcard (1.0.1)
+    Downloading: 100%
+
+Package videlalvaro/php-amqplib is abandoned, you should avoid using it. Use php-amqplib/php-amqplib instead.
+Writing lock file
+Generating autoload files
+/var/www/magento/app/Mage.php was already patched
+</pre>
+
+Manual updates to composer.json may be possible, but should be done in conjunction with instructions from Radial engineering staff.
+
 ## Sign Up for Radial API Access
 
-information coming soon...
+For access to Radial API's, please see [Radial.com](http://www.radial.com/) for more information...
