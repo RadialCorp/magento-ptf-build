@@ -1,10 +1,8 @@
 {
-  "name": "radial/magento-ptf-build",
   "require": {
     "radial/magento-payments-creditcard" : "1.0.0"
   },
   "extra": {
-    "magento-root-dir": ".",
     "magento-deploystrategy": "copy",
     "magento-force": true
   },
