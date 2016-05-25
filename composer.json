@@ -2,7 +2,7 @@
   "name": "radial/magento-ptf-build",
   "require": {
     "radial/magento-fraud-risk": "1.0.10",
-    "radial/magento-payments" : "1.0.4"
+    "radial/magento-payments" : "1.0.5"
   },
   "extra": {
     "magento-deploystrategy": "copy",
