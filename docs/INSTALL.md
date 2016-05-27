@@ -2,6 +2,10 @@
 
 # Radial Magento Payments Tax Fraud Extension
 
+## Contents
+  * [Installation](#installation)
+  * [Upgrading Radial Extensions](#upgrading-radial-extensions)
+  * [Disabling Radial PTF Extension](#disabling-radial-ptf-extension)
 
 ## Installation
 
@@ -70,6 +74,33 @@ Generating autoload files
 Manual updates to composer.json may be possible, but should be done in conjunction with instructions from Radial engineering staff.
 
 Always remember to cache clear and check for updates to app/etc/rom.xml.sample when updating!
+
+## Disabling Radial PTF Extension
+
+In the event that the Radial PTF extension needs to be literally not loaded by Magento (for example, due to a conflict with another extension or in the testing of conflicts between extensions), the following instructions can be used to fully prevent Magento from loading the extension at all.  Please note: if all that is needed is to toggle functionality (i.e. change payment methods being used or temporarily stop fraud processing), there is a much simpler series of Admin steps under [Setup and Configuration](SETUP.md) that should be followed.
+
+To completely disable the Radial PTF Extension, go to your Modules directory (under <magento_install>/app/etc/modules/) and edit the following configuration files and change:
+
+    <active>true</active>
+    
+to
+
+
+    <active>false</active>
+
+Files:
+
+- Radial_Transactions.xml
+- Radial_PayPal.xml
+- Radial_Payments.xml
+- Radial_CreditCard.xml
+- Radial_Core.xml
+- Radial_Amqp.xml
+- Hackathon_PSR0Autoloader.xml
+- EbayEnterprise_MageLog.xml
+- EbayEnterprise_Eb2cFraud.xml
+
+Be sure to clear cache after disabling and the entire Radial PTF Extension will not be loaded by Magento.
 
 ## Next Docs
 

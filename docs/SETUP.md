@@ -2,6 +2,13 @@
 
 # Radial Magento Payments Tax Fraud Extension 
 
+## Contents
+  * [Admin Console Setup and Configuration](#admin-console-setup-and-configuration)
+  * [Enabling Credit Card Processing](#enabling-credit-card-processing)
+  * [Enabling PayPal Processing](#enabling-paypal-processing)
+  * [Enabling Fraud Processing](#enabling-fraud-processing)
+  * [Disabling Radial Payment Methods and Fraud Processing](#disabling-radial-payment-methods-and-fraud-processing)
+
 ## Admin Console Setup and Configuration
 
 The Radial PTF extension does not function unless it is a) configured and b) linked to an active account for accessing Radial's Public API's.  These first three steps are required before anything can be done to enable/activate payment, tax, or fraud processing at Radial.
@@ -62,6 +69,15 @@ In order for the storefront to receive fraud evaluations from Radial, please ens
 
 Please remember to cache-clear after setting up data in Magento admin...
 
+## Disabling Radial Payment Methods and Fraud Processing
+
+If there is a need to temporarily disable Radial Payment and/or Fraud processing, both can be shut off via Magento Admin using the below steps.  Please note: If Radial Credit Card and PayPal are disabled, another payment method will need to be enabled otherwise the storefront will have no configured means of paying for an order and customers will not be able to checkout.
+
+To stop using Radial Credit Card Processing as an active Payment Method in Magento - go to Admin > System > Configuration > Payment Methods select the eBay Enterprise Credit Card header and set Enabled to No.  Save and clear cache.
+
+To stop using Radial PayPal Processing as an active Payment Method in Magento - go to Admin > System > Configuration > Payment Methods select the eBay Enterprise PayPal header and set Enabled to No.  Save and clear cache.
+
+To disable Radial Fraud Processing, go to System > Configuration > Radial - Payments, Tax, Fraud and select the Fraud tab and set "Enabled" to No.  Save and clear cache.
 
 ## Next Docs
 
