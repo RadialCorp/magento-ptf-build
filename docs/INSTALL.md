@@ -13,11 +13,11 @@
 
 > To install the last stable release copy the [composer.json](composer.json) file into the **base Magento installation directory** - it is strongly recommended to do this in a non-production environment, test the results, and then use a tagged file repository to make it live. The file may be curl'ed to the server via:
 
-`curl https://raw.githubusercontent.com/RadialCorp/magento-ptf-build/master/composer.json -o composer.json`
+	curl https://raw.githubusercontent.com/RadialCorp/magento-ptf-build/master/composer.json -o composer.json
 
 > Now run the following command:
 
-`composer install`
+	composer install
 
 > The output should look something like this:
 
@@ -73,13 +73,13 @@ Generating autoload files
 
 Manual updates to composer.json may be possible, but should be done in conjunction with instructions from Radial engineering staff.
 
-Always remember to cache clear and check for updates to app/etc/rom.xml.sample when updating!
+Always remember to cache clear and check for updates to <magento_install\>/app/etc/rom.xml.sample when updating!
 
 ## Disabling Radial PTF Extension
 
 In the event that the Radial PTF extension needs to be literally not loaded by Magento (for example, due to a conflict with another extension or in the testing of conflicts between extensions), the following instructions can be used to fully prevent Magento from loading the extension at all.  Please note: if all that is needed is to toggle functionality (i.e. change payment methods being used or temporarily stop fraud processing), there is a much simpler series of Admin steps under [Setup and Configuration](SETUP.md) that should be followed.
 
-To completely disable the Radial PTF Extension, go to your Modules directory (under <magento_install>/app/etc/modules/) and edit the following configuration files and change:
+To completely disable the Radial PTF Extension, go to your Modules directory (under <magento_install\>/app/etc/modules/) and edit the following configuration files and change:
 
     <active>true</active>
     
