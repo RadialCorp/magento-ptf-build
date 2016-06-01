@@ -17,7 +17,7 @@ It is important to note that the invalid hostname error may indicate a lack of n
 ### Testing Connection to AMQP Fails
 
 If testing reports "No queues configured":
-> Make sure you have moved the <magento_install>/app/etc/rom.xml.sample file to <magento_install>/app/etc/rom.xml.  
+> Make sure you have moved the <magento_install\>/app/etc/rom.xml.sample file to <magento_install\>/app/etc/rom.xml.  
 
 If testing reports "AMQP connection failed":
 > Please reconfirm the username, password and hostname with information provided from Radial; if the test continues to fail, please reconfirm the configuration entries with Radial.
@@ -40,7 +40,7 @@ Go to System > Configuration > Sales > Payment Method > eBay Enterprise PayPal a
 
 ### There is nothing under System > Configuration > Radial > Payments, TDF, Fraud
 
-This would indicate that the extension is not loaded correctly or at all.  Check to see if there are any files under <magento_install>/app/code/community/Radial and <magento_install>/vendor/radial - if either or both of those Radial directories are missing, that would indicate that the core install process was not successfully completed.  Please review the installation steps under [Installation And Upgrading](INSTALL.md) and coordinate with Radial for next steps if there continue to be problems.
+This would indicate that the extension is not loaded correctly or at all.  Check to see if there are any files under <magento_install\>/app/code/community/Radial and <magento_install\>/vendor/radial - if either or both of those Radial directories are missing, that would indicate that the core install process was not successfully completed.  Please review the installation steps under [Installation And Upgrading](INSTALL.md) and coordinate with Radial for next steps if there continue to be problems.
 
 ## Next Docs
 

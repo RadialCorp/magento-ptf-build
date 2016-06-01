@@ -2,15 +2,89 @@
 
 # Radial Magento Payments Tax Fraud Extension 
 
-## Note about Ship Methods
+## Contents
+  * [Setting Up Shipping Methods](#setting_up_shipping_methods)
+  * [Sign Up for Radial API Access](#sign_up_for_radial_api_access)
+  * [Order Management and Fraud States](#order_management_and_fraud_states)
 
-Radial's Fraud Engine needs to understand what ship methods are being used in a storefront to provide accurate fraud assessments (i.e. Next Day Air, Ground, etc...) as this information is passed back to Radial.  Please coordinate with your Radial team to ensure that Radial has a correct understanding of what ship methods are being used for your storefront.
+## Setting Up Shipping Methods
+
+Radial's Fraud Engine needs to understand what ship methods are being used in a storefront to provide accurate fraud assessments (i.e. Next Day Air, Ground, etc...) as this information is passed back to Radial; since different Magento installations tend to articulate these shipping codes differently from each other, a map needs to be maintained to help Radial's Fraud Engine properly understand the shipping codes being used.  This mapping is created in <magento_install\>/app/etc/rom.xml (rom.xml.sample is provided as part of the installation of the Radial extension):
+
+        <radial_core>
+            <!--
+            Shipping Codes: Map Magento shipping methods to ROM shipping codes. Node names must match Magento shipping
+            methods. Values must match ROM shipping codes specific to your client implementation, which eBay Enterpise
+            will provide to you.
+            -->
+            <shipmap>
+                <flatrate_flatrate>ANY_STD</flatrate_flatrate>
+            </shipmap>
+        </radial_core>
+
+Since there is no place in admin which tells you what your active shipping codes are, the following script will give you a dump of what your available ship methods are:
+
+	<?php
+	chdir(dirname(__FILE__));
+	require 'app/Mage.php';
+	Mage::init('admin');
+	$methods = Mage::getSingleton('shipping/config')->getActiveCarriers();
+	foreach($methods as $_ccode => $_carrier) {
+	    if($_methods = $_carrier->getAllowedMethods())  {
+	        foreach($_methods as $_mcode => $_method)   {
+	                $_code = $_ccode . '_' . $_mcode;
+	                echo $_code."\n";
+	        }
+	    }
+	}
+	?>
+
+Save that script to a file shipping-codes.php and run from your Magento install directory ("php shipping-codes.php") and it should give you a list of what's active for your install - for example:
+
+	$ php shipping-codes.php
+	
+	flatrate_flatrate
+	fedex_EUROPE_FIRST_INTERNATIONAL_PRIORITY
+	fedex_FEDEX_1_DAY_FREIGHT
+	fedex_FEDEX_2_DAY_FREIGHT
+	fedex_FEDEX_2_DAY
+	fedex_FEDEX_2_DAY_AM
+	fedex_FEDEX_3_DAY_FREIGHT
+	fedex_FEDEX_EXPRESS_SAVER
+	fedex_FEDEX_GROUND
+	fedex_FIRST_OVERNIGHT
+	fedex_GROUND_HOME_DELIVERY
+	fedex_INTERNATIONAL_ECONOMY
+	fedex_INTERNATIONAL_ECONOMY_FREIGHT
+	fedex_INTERNATIONAL_FIRST
+	fedex_INTERNATIONAL_GROUND
+	fedex_INTERNATIONAL_PRIORITY
+	fedex_INTERNATIONAL_PRIORITY_FREIGHT
+	fedex_PRIORITY_OVERNIGHT
+	fedex_SMART_POST
+	fedex_STANDARD_OVERNIGHT
+	fedex_FEDEX_FREIGHT
+	fedex_FEDEX_NATIONAL_FREIGHT
+
+Use these codes to map up to Radial-supported shipping codes in rom.xml using the syntax:
+
+	<STORE_SHIPPING_CODE>RADIAL_SHIPPING_CODE</STORE_SHIPPING_CODE>
+
+	for example:
+    
+	<flatrate_flatrate>ANY_STD</flatrate_flatrate>
+
+	Which maps "flatrate_flatrate" to "ANY_STD" in all fraud data sent to Radial
+
+After creating the export of available shipping methods, please work with your Radial team to determine the best corresponding Radial shipping codes to map to in rom.xml.
+
+Please coordinate with your Radial team to ensure that correct ship method mappings are established and tested.
 
 ## Sign Up for Radial API Access
 
 For access to Radial API's, please see [Radial.com](http://www.radial.com/) for more information...
 
-## Order Management and Fraud
+## Order Management and Fraud States
 
 Rolling out Radial Fraud processing involves making some important modifications to order fulfillment.  In a traditional model, orders are received and filled; Radial fraud processing sits in the middle of order received and order fulfillment to provide a recommendation on whether an order is fraudulent before filling.  Now, orders are received, fraud evaluated, and filled if fraud approved, which means that the fulfillment process needs to understand when fraud evaluation is completed - to accomplish this, the Radial Fraud extension introduces some new order statuses to reflect different stages of processing.  
 
