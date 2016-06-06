@@ -93,6 +93,7 @@ New order statuses include (with their Magento order status codes and descriptio
 - Fraud Accepted ('risk_accept'): Order has been evaluated and determined to be non-fraudulent
 - Order Submitted to Fraud System ('risk_submitted'): Order data has been submitted to the Radial fraud engine for evaluation
 - Order Under Review for Fraud Detection ('risk_processing'): Order is currently under review
+- Order Has NOT been transmitted to Fraud ('risk_retrysubmit'): Order has not been successfully sent to Radial, retrying
 - Fraud Cancelled ('risk_cancel'): Order has been determined to be fraudulent and should be canceled.  
 - Fraud Ignore ('risk_ignore'): Fraud engine is ignoring the order due to setup on Radial side
 - Fraud Suspend ('risk_suspend'): Order is undergoing extended evaluation 
