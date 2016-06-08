@@ -72,12 +72,20 @@ Some other settings of note:
 There are two cron jobs packaged with the Radial PTF extension:
 
 ### radial\_eb2cfraud\_retry\_sendevent
-The radial\_eb2cfraud\_retry\_sendevent job resends Fraud evaluations which failed to be transmitted on initial order submission; the default cron mask is set to run once a minute as any orders which fail to be transmitted on order submit should get to Radial fraud processing as quickly as possible.    
+The radial\_eb2cfraud\_retry\_sendevent job resends Fraud evaluations which failed to be transmitted on initial order submission.    
 
 ### radial\_amqp\_runner\_process\_queues
-The radial\_amqp\_runner\_process\_queues job is responsible for checking for and retrieving fraud evaluations from Radial - these determines are processed and update order states based on the incoming data. It is recommended that this cron mask be set to run no more than every 5 minutes (the default setting) to ensure timely processing of orders (most fraud determinations are made in well under 5 minutes).
+The radial\_amqp\_runner\_process\_queues job is responsible for checking for and retrieving fraud evaluations from Radial - these determines are processed and update order states based on the incoming data.
+
+### radial\_payments\_retry\_settlements
+The radial\_payments\_retry\_settlements job retransmits any settlement communications that failed in their initial posting back to Radial.  
 
 While these cron jobs are set to a cron *schedule* as part of the default installation, it is important to ensure that cron is actually set up and running for that schedule to work.  Default cron schedules can also be overridden if needed via any of the oft-used cron management extensions available (such as AOE Scheduler - https://github.com/AOEpeople/Aoe_Scheduler).  Please remember to cache-clear after setting up data in Magento admin when making adjustments to cron schedules.
+
+Example of setting an override cron expression in AOE scheduler:
+
+<img src="assets/scheduling.png">
+
 
 ## Disabling Radial Payment Methods and Fraud Processing
 
@@ -88,6 +96,12 @@ To stop using Radial Credit Card Processing as an active Payment Method in Magen
 To stop using Radial PayPal Processing as an active Payment Method in Magento - go to Admin > System > Configuration > Payment Methods select the eBay Enterprise PayPal header and set Enabled to No.  Save and clear cache.
 
 To disable Radial Fraud Processing, go to System > Configuration > Radial - Payments, Tax, Fraud and select the Fraud tab and set "Enabled" to No.  Save and clear cache.
+
+Additionally, for fully disabling all interactions with Radial, disable the following cron jobs:
+
+- radial\_eb2cfraud\_retry\_sendevent 
+- radial\_amqp\_runner\_process\_queues 
+- radial\_payments\_retry\_settlements
 
 ## Order Event Logging
 

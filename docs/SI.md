@@ -14,7 +14,7 @@ Radial's Fraud Engine needs to understand what ship methods are being used in a 
         <radial_core>
             <!--
             Shipping Codes: Map Magento shipping methods to ROM shipping codes. Node names must match Magento shipping
-            methods. Values must match ROM shipping codes specific to your client implementation, which eBay Enterpise
+            methods. Values must match ROM shipping codes specific to your client implementation, which Radial
             will provide to you.
             -->
             <shipmap>
