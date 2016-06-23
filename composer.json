@@ -2,7 +2,7 @@
   "name": "radial/magento-ptf-build",
   "require": {
     "magento-hackathon/magento-composer-installer": "~2.1",
-    "radial/magento-fraud-risk": "1.0.37",
+    "radial/magento-fraud-risk": "1.0.38",
     "radial/magento-automated-invoicing": "~1.0",
     "radial/magento-payments" : "1.0.15"
   },
