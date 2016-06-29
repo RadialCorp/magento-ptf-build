@@ -4,7 +4,7 @@
 
 ## Contents
   * [Setting Up Shipping Methods](#setting_up_shipping_methods)
-  * [Setting Up Credit Card Tender Types](#setting_up_radial_credit_card_tender_types)
+  * [Setting Up Radial Credit Card Tender Types](#setting_up_radial_credit_card_tender_types)
   * [Sign Up for Radial API Access](#sign_up_for_radial_api_access)
   * [Order Management and Fraud States](#order_management_and_fraud_states)
 
@@ -86,12 +86,12 @@ Please coordinate with your Radial team to ensure that correct ship method mappi
 Map Magento credit card types to Radial PTF credit card tender types. Node names must match the credit card code as configured in Mage_Payment's etc/config.xml. Values must match credit card tender types supported by Radial's PTF payment service. This mapping is created in <magento_install\>/app/etc/rom.xml (rom.xml.sample is provided as part of the installation of the Radial extension):
 
         <radial_creditcard>
-            <tender_types>
-                <AE>AM</AE>
-                <DI>DC</DI>
-                <MC>MC</MC>
-                <VI>VC</VI>
-            </tender_types>
+        	<tender_types>
+                	<AE>AM</AE>
+                	<DI>DC</DI>
+                	<MC>MC</MC>
+                	<VI>VC</VI>
+            	</tender_types>
         </radial_creditcard>
 
 ## Sign Up for Radial API Access
