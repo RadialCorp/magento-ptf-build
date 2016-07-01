@@ -115,9 +115,11 @@ There is only one configuration setting in Admin for Auto Invoicing under System
 
 <img src="assets/invoicing.png">
 
+Reconfirm Age specifies the time (in hours) that needs to pass in Fraud processing before a reconfirmation of funds is needed.  So, if Reconfirm Age is 36 hours and there is more than 36 hours spent between when an order was submitted and when it was fraud approved, Radial will perform a supplemental funds confirmation on the order before setting it to "Ready to Ship" status.  The intention here is to ensure that funds previously auth'ed at the point of order submission are still available after a prolonged fraud assessment period (i.e. manual review).
 
 To add the Auto Invoicing component to Radial PTF, please add the following line to your composer.json's require block:
 
+	"radial/magento-automated-invoicing": "~1.0.0"
 
 For example:
 
@@ -127,6 +129,7 @@ For example:
 	    "magento-hackathon/magento-composer-installer": "~2.1",
 	    "radial/magento-fraud-risk": "1.0.36",
 	    "radial/magento-payments" : "1.0.14",
+		"radial/magento-automated-invoicing": "~1.0.0"
 	  },
 	  "extra": {
 	    "magento-deploystrategy": "copy",
