@@ -7,6 +7,7 @@
   * [Setting Up Radial Credit Card Tender Types](#setting_up_radial_credit_card_tender_types)
   * [Sign Up for Radial API Access](#sign_up_for_radial_api_access)
   * [Order Management and Fraud States](#order_management_and_fraud_states)
+  * [Adding Auto-Invoicing / Settlement](#adding_auto_invoicing)
 
 ## Setting Up Shipping Methods
 
@@ -15,7 +16,7 @@ Radial's Fraud Engine needs to understand what ship methods are being used in a 
         <radial_core>
             <!--
             Shipping Codes: Map Magento shipping methods to ROM shipping codes. Node names must match Magento shipping
-            methods. Values must match ROM shipping codes specific to your client implementation, which eBay Enterpise
+            methods. Values must match ROM shipping codes specific to your client implementation, which Radial
             will provide to you.
             -->
             <shipmap>
@@ -119,6 +120,44 @@ In the end, each order state is a *recommendation* for handing the order (with t
 2. Train internal staff responsible for fulfilling orders to ensure that they adhere to the process and only fulfill orders in these newer statuses.
 
 Work with your Magento SI to adjust any feeds / cron jobs which base themselves off of order status so that they only pick up orders in an appropriate/desired state
+
+## Adding Auto Invoicing
+
+Since many businesses do not process orders manually in Magento Admin, an additional extension is available that can be added to the Radial PTF installation which automates post-order submission payment processing.  Once installed, this extension takes orders which have been processed through Fraud and puts them in a state of "Ready to Ship".  If sufficient time has passed during fraud processing, the extension will automatically perform a confirm funds call back to Radial to confirm funds are still available to process the order.  Additionally, the extension will automatically initiate settlement on the portion of an order shipped when a shipment is logged into Magento.  This helps make the payment processing of an order not dependent on a human in the Admin UI performing manual actions.
+
+There is only one configuration setting in Admin for Auto Invoicing under System > Configuration > Radial - Payments, Tax, Fraud > Radial Invoicing:
+
+<img src="assets/invoicing.png">
+
+Reconfirm Age specifies the time (in hours) that needs to pass in Fraud processing before a reconfirmation of funds is needed.  So, if Reconfirm Age is 36 hours and there is more than 36 hours spent between when an order was submitted and when it was fraud approved, Radial will perform a supplemental funds confirmation on the order before setting it to "Ready to Ship" status.  The intention here is to ensure that funds previously auth'ed at the point of order submission are still available after a prolonged fraud assessment period (i.e. manual review).
+
+To add the Auto Invoicing component to Radial PTF, please add the following line to your composer.json's require block:
+
+	"radial/magento-automated-invoicing": "~1.0.0"
+
+For example:
+
+	{
+	  "name": "radial/magento-ptf-build",
+	  "require": {
+	    "magento-hackathon/magento-composer-installer": "~2.1",
+	    "radial/magento-fraud-risk": "1.0.36",
+	    "radial/magento-payments" : "1.0.14",
+		"radial/magento-automated-invoicing": "~1.0.0"
+	  },
+	  "extra": {
+	    "magento-deploystrategy": "copy",
+	    "magento-force": true,
+	    "magento-root-dir": "/var/www/magento"
+	  },
+	  "repositories": [
+	    { "type": "composer", "url": "https://packages.firegento.com/" }
+	  ]
+	}
+
+Please remember to add the comma at the end of the previous line.
+
+Then run composer update and the extension will be installed.
 
 ## Next Docs
 
