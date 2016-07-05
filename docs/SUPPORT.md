@@ -26,7 +26,7 @@ This error may also indicate a lack of network connectivity between the Magento 
 
 ### Radial Credit Cards/PayPal not showing on Payment Information page in Checkout
 
-1. Make sure System > Configuration > Sales > Payment Methods has eBay Enterprise Credit Card Enabled set to "Yes" - see [Setup and Configuration](SETUP.md) for more information
+1. Make sure System > Configuration > Sales > Payment Methods has Radial Credit Card Enabled set to "Yes" and Radial PayPal Enabled set to "Yes" - see [Setup and Configuration](SETUP.md) for more information
 2. If your Magento installation is utilizing a caching extension (for example, the out of the box Enterprise Edition caches), make sure you flush all caches and recheck the Payment Options page in checkout
 3. Note that if you are switching from another payments provider to Radial, you may want to temporarily set the Titles for Credit Card and PayPal to something distinctive to ensure that the correct payment provider's extension is being loaded.
 
@@ -36,7 +36,7 @@ This is typically due to having multiple payment processors active under System 
 
 ### PayPal is not showing up on the cart or product page
 
-Go to System > Configuration > Sales > Payment Method > eBay Enterprise PayPal and make sure "Shortcut on Shopping Cart" and "Shortcut on Product View" are both set to "Yes".  Additionally, make sure to flush any caches before rechecking.
+Go to System > Configuration > Sales > Payment Method > Radial PayPal and make sure "Shortcut on Shopping Cart" and "Shortcut on Product View" are both set to "Yes".  Additionally, make sure to flush any caches before rechecking.
 
 ### There is nothing under System > Configuration > Radial > Payments, TDF, Fraud
 

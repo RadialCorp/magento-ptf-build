@@ -85,20 +85,19 @@ To completely disable the Radial PTF Extension, go to your Modules directory (un
     
 to
 
-
     <active>false</active>
 
 Files:
 
-- Radial_Transactions.xml
-- Radial_PayPal.xml
-- Radial_Payments.xml
-- Radial_CreditCard.xml
 - Radial_Core.xml
 - Radial_Amqp.xml
 - Hackathon_PSR0Autoloader.xml
 - EbayEnterprise_MageLog.xml
-- EbayEnterprise_Eb2cFraud.xml
+- Radial_Transactions.xml
+- Radial_PayPal.xml
+- Radial_Payments.xml
+- Radial_Eb2cFraud.xml
+- Radial_CreditCard.xml
 
 Be sure to clear cache after disabling and the entire Radial PTF Extension will not be loaded by Magento.
 
