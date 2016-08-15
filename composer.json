@@ -4,7 +4,7 @@
     "magento-hackathon/magento-composer-installer": "~2.1",
     "radial/magento-fraud-risk": "1.1.15",
     "radial/magento-payments" : "1.1.13",
-    "radial/magento-tax" : "1.0.21"
+    "radial/magento-tax" : "1.0.22"
   },
   "extra": {
     "magento-deploystrategy": "copy",
