@@ -38,6 +38,18 @@ The radial\_eb2cfraud\_retry\_sendevent job resends Fraud evaluations which fail
 ### radial\_amqp\_runner\_process\_queues
 The radial\_amqp\_runner\_process\_queues job is responsible for checking for and retrieving fraud evaluations from Radial - these determines are processed and update order states based on the incoming data. It is recommended that this cron mask be set to run no more than every 5 minutes (the default setting) to ensure timely processing of orders (most fraud determinations are made in well under 5 minutes).
 
+### radial\_creditcard\_pubkey\_sync
+The radial\_creditcard\_pubkey\_sync job is responsible for ensuring that a storefront has the most current CSE (Client Side Encryption) key allocated to the store by Radial.  This cron job is expected to run daily and will refresh the key when needed.
+
+### radial\_payments\_retry\_settlements
+The radial\_payments\_retry\_settlements job retries payment settlement calls; it is recommended that this cron mask be set to run no more than every 5 minutes (the default setting) to ensure timely processing.
+
+### radial\_tax\_retry\_creditmemo
+The radial\_tax\_retry\_creditmemo job retries the communication of credit memo tax information; It is recommended that this cron mask be set to run no more than every 5 minutes (the default setting) to ensure timely processing.
+
+### radial\_tax\_retry\_invoice
+The radial\_tax\_retry\_invoice job retries the communication of tax invoice information; It is recommended that this cron mask be set to run no more than every 5 minutes (the default setting) to ensure timely processing.
+
 While these cron jobs are set to a cron *schedule* as part of the default installation, it is important to ensure that cron is actually set up and running for that schedule to work.  Default cron schedules can also be overridden if needed via any of the oft-used cron management extensions available (such as AOE Scheduler - https://github.com/AOEpeople/Aoe_Scheduler).  Please remember to cache-clear after setting up data in Magento admin when making adjustments to cron schedules.
 
 ## Setting Up Automated Invoicing
@@ -63,6 +75,8 @@ To stop using Radial Credit Card Processing as an active Payment Method in Magen
 To stop using Radial PayPal Processing as an active Payment Method in Magento - go to Admin > System > Configuration > Payment Methods select the eBay Enterprise PayPal header and set Enabled to No.  Save and clear cache.
 
 To disable Radial Fraud Processing, go to System > Configuration > Radial - Payments, Tax, Fraud and select the Fraud tab and set "Enabled" to No.  Save and clear cache.
+
+If all functionality of the Radial PTF extension needs to be fully disabled, please see the sections on Automated Invoicing for information about turning off Automated Invoicing and Setting Up Extension Cron Jobs for a list of cron jobs to disable.
 
 ## Order Event Logging
 
