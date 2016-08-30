@@ -4,6 +4,7 @@
 
 ## Contents
   * [Enabling Tax Processing](#enabling-tax-processing)
+  * [Setting a Shipping Origin](#setting_a_shipping_origin)
   * [Notes About Taxes in Magento](#notes-about-taxes-in-magento)
   * [Taxes on Gifting Options, Warranties, Customization, and Shipping Taxes](taxes_on_gifting_options_warranties_customization_and_shipping_taxes) 
 
@@ -24,9 +25,11 @@ Additionally in this tab there is some informational reporting:
  - "# of Tax Messages At Max Transmission Retries": indicates the number of tax messages which have reached their maximum number of retries and will not be retried unless an admin clicks the "Reset Tax Messages at Max Transmission" - clicking that button will force those messages to go through a full set of retries (as defined by the Maximum Tax Transmission Retries field).  Errors in transmission that cause this count to increase should also result in emails going to the Tax Payments Admin Email that is specified.  Small numbers accumulating here can often be addressed by clicking the Reset Tax MEssages at Max Transmissions button.  Admins should only click on the Purge Tax Message Retry Queue if instructed by Radial support.
  - "# of Tax Messages Waiting for Transmission Retry": this indicates the number of messages in the process of being retried.  In and of itself, a number greater than 0 here does not necessarily indicate a problem. 
 
-<img src="assets/tax_admin_tab.png">
+Once done, click Save Config and, if necessary, clear cache.
 
-There is a second tab for Radial Tax in Magento Admin named "Radial Tax Admin" which is used to specify a default ship from address for tax calculation purposes.  This is typically a businesses warehouse (or primary warehouse) from which orders are shipped from.  If there a many warehouses from which products are shipped, this address would function as a default address to estimate taxes based on.
+## Setting a Shipping Origin
+
+The Radial PTF extension uses the defined Shipping Origin as specified in Magento under System > Configuration > Sales > Shipping Settings > Origin.  This is typically a businesses warehouse (or primary warehouse) from which orders are shipped from.  If there a many warehouses from which products are shipped, this address would function as a default address to estimate taxes based on.   This must be set for Radial PTF to calculate taxes correctly.
 
 Once done, click Save Config and, if necessary, clear cache.
 

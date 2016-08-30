@@ -31,13 +31,19 @@ Some other settings of note:
 - Payment from Applicable Countries: if this payment method is allowed from only certain countries, change "All Allowed Countries" to "Specific Countries" and then select the desired countries from the list below.
 - Encryption Key: A field to input the Client Side Encryption Key (CSE) - please note that Radial must provide this encryption key.  
 - CSE Encryption Algorithm: Leave at default value unless otherwise instructed by Radial support
+
+There are a series of fields indicating when to allow a failed credit auth through to stop the attempts (i.e. if a customer receives 3 AVS failures, let the order go through but cancel it).  It is strongly recommended that these numbers be worked on in conjunction with the Radial Fraud team.
+
 - Pass After AVS Response
-- AVE Failure Response Display
+- Pass After DECLF Response
+- Pass After DECL Response
+
+There are a series of messages that are displayed for different credit auth failure situations.  Many businesses define them to be the same message to lessen the chances that a customer attempting fraud will understand their reasons for declining.  Some businesses customize the messages for a better customer experience.
+
+- AVS Failure Response Display 
 - AVSCSC Failure Response Display
 - CSC Failure Display
-- Pass After DECLF Response
 - DECLF Failure Response Display
-- Pass After DECL Response
 - DECL Failure Response Display
 
 Once done, click Save Config and, if necessary, clear cache.
