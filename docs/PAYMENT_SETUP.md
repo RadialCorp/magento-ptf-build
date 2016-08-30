@@ -10,6 +10,14 @@
 
 <img src="assets/payments_tab.png">
 
+- Maximum Payments Transmission Retries: The number of times the Radial PTF extension will attempt to retry an operation involving transmitting Payments data to Radial (higher numbers will increase communication success rates, lower numbers will tie up the system less - recommendation default is 3)
+- Payments Admin Email: An email address / distribution list to use for notifying an administrator of a problem
+- Payments Response Timeout: Number of milliseconds each Radial Payments communication operation is allowed before timing out (higher numbers will increase communication success rates, lower numbers will tie up the system less - recommendation default is 20000)
+
+Additionally in this tab there is some informational reporting:
+
+ - "# of Payments Messages At Max Transmission Retries": indicates the number of payments messages which have reached their maximum number of retries and will not be retried unless an admin clicks the "Reset Payments Messages at Max Transmission" - clicking that button will force those messages to go through a full set of retries (as defined by the Maximum Payments Transmission Retries field).  Errors in transmission that cause this count to increase should also result in emails going to the Payments Admin Email that is specified.  Small numbers accumulating here can often be addressed by clicking the Reset Payments Messages at Max Transmissions button.  Admins should only click on the Purge Payments Message Retry Queue if instructed by Radial support.
+ - "# of Payments Messages Waiting for Transmission Retry": this indicates the number of messages in the process of being retried.  In and of itself, a number greater than 0 here does not necessarily indicate a problem. 
 
 ## Enabling Credit Card Processing
 
@@ -21,7 +29,16 @@ Some other settings of note:
 
 - Title: What appears on the checkout payments page describing this payment option
 - Payment from Applicable Countries: if this payment method is allowed from only certain countries, change "All Allowed Countries" to "Specific Countries" and then select the desired countries from the list below.
-- Use Client Side Encryption: If client side encryption is being used, set Use Client Side Encryption to "Yes" - this will make a new field appear to input the encryption key - please note that Radial must provide this encryption key.  
+- Encryption Key: A field to input the Client Side Encryption Key (CSE) - please note that Radial must provide this encryption key.  
+- CSE Encryption Algorithm: Leave at default value unless otherwise instructed by Radial support
+- Pass After AVS Response
+- AVE Failure Response Display
+- AVSCSC Failure Response Display
+- CSC Failure Display
+- Pass After DECLF Response
+- DECLF Failure Response Display
+- Pass After DECL Response
+- DECL Failure Response Display
 
 Once done, click Save Config and, if necessary, clear cache.
 

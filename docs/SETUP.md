@@ -22,6 +22,8 @@ Step 3 - Your Radial Technical contact will provide you with the information nee
 
 <img src="assets/general_tab.png">
 
+Note that Radial support staff may want to know what is reported back in the PTF Installed? and ROM.XML Configured? sections.  Those fields are informational only for support purposes.
+
 Please be sure to test API and AMQP connectivity before proceeding to any other steps.  If this connectivity is not working, that must be resolved before anything else is done.
 
 Assuming all fields and entered and the connectivity test buttons work correctly, save the configuration and, if applicable, clear cache.  
