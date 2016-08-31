@@ -90,17 +90,28 @@ to
 
 Files:
 
-- Radial_Transactions.xml
-- Radial_PayPal.xml
-- Radial_Payments.xml
-- Radial_CreditCard.xml
-- Radial_Core.xml
 - Radial_Amqp.xml
+- Radial_Core.xml
+- Radial_CreditCard.xml
+- Radial_Eb2cFraud.xml
+- Radial_Eb2cGiftwrap.xml
+- Radial_Order.xml
+- Radial_Payments.xml
+- Radial_PayPal.xml
+- Radial_Tax.xml
+- Radial_Transactions.xml
 - Hackathon_PSR0Autoloader.xml
 - EbayEnterprise_MageLog.xml
 - EbayEnterprise_Eb2cFraud.xml
 
 Be sure to clear cache after disabling and the entire Radial PTF Extension will not be loaded by Magento.
+
+Please note that in fully disabling these extensions the order ID's presented in your system will change; Radial's PTF extension prepends a suffix to order ID's in Magento and disabling the extension will cause it to no longer prepend the 5 digit suffix - this will have the effect of making order ID's go backwards 5 digits.  This side effect can be mitigated by leaving the Radial Core extension loaded or by following the instructions under "Disabling Radial PTF" in the [Setup and Configuration](SETUP.md) guide.  It is recommended that you disable Radial PTF functionality rather than uninstalling the extensions if the storefront has taken a large number of orders with the suffix.
+
+Important Note About Order ID's:
+
+The Radial PTF extension uses an order ID prefix in its initial setup - see: 
+[Setup and Configuration](SETUP.md) - if you have had the Radial PTF extension on for a while and have taken a number of orders, you may want to consider leaving the Radial_Core module active to continue the prefixing - once Radial_Core is disabled, the prefixing will stop and order ID's will "become smaller" (i.e. lose their prefixes and look like they went down five digits).  This side effect may cause downstream systems to be confused when attempting to identify the "next" order ID expected from subsequent orders as its not common for a next order to be five digits less than the previous.
 
 ## Next Docs
 

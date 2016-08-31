@@ -106,6 +106,8 @@ In the end, each order state is a *recommendation* for handing the order (with t
 
 Work with your Magento SI to adjust any feeds / cron jobs which base themselves off of order status so that they only pick up orders in an appropriate/desired state
 
+It is strongly recommended that integrators look at turning on the Automated Invoicing option described in [Setup and Configuration](SETUP.md) to simplify the integration with a downstream fulfillment system.
+
 ## Next Docs
 
 [Main](../README.md)

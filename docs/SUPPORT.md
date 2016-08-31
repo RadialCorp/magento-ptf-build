@@ -42,6 +42,14 @@ Go to System > Configuration > Sales > Payment Method > eBay Enterprise PayPal a
 
 This would indicate that the extension is not loaded correctly or at all.  Check to see if there are any files under <magento_install\>/app/code/community/Radial and <magento_install\>/vendor/radial - if either or both of those Radial directories are missing, that would indicate that the core install process was not successfully completed.  Please review the installation steps under [Installation And Upgrading](INSTALL.md) and coordinate with Radial for next steps if there continue to be problems.
 
+### Eveything appears to be working, but submitting orders fails
+There could be a variety of reasons for this and you should always check the logs in this case, but you may want to first check to see if there are loaded ship maps in rom.xml - go under System > Configuration > Radial > Payments, TDF, Fraud and look under the general tab:
+
+<img src="assets/general_tab.png">
+
+The section showing "ROM.XML Configured?" should show that there are shipmaps and tender types defined.  If it says there are not, try clearing cache and going back to this screen.  If it still says there aren't any shipmaps defined, the installation probably has a missing or malformed rom.xml file - please see [Setup and Configuration](SETUP.md) "Step 1 - Rename the app/etc/rom.xml.sample file to rom.xml" and 
+[Integrators Guide](SI.md) "Setting Up Shipping Methods" for more information about making sure your rom.xml is set up and configured correctly.  
+
 ## Next Docs
 
 [Main](../README.md)
