@@ -30,7 +30,7 @@ Assuming all fields and entered and the connectivity test buttons work correctly
 
 ## Setting Up Extension Cron Jobs
 
-There are two cron jobs packaged with the Radial PTF extension:
+There are six cron jobs packaged with the Radial PTF extension:
 
 ### radial\_eb2cfraud\_retry\_sendevent
 The radial\_eb2cfraud\_retry\_sendevent job resends Fraud evaluations which failed to be transmitted on initial order submission; the default cron mask is set to run once a minute as any orders which fail to be transmitted on order submit should get to Radial fraud processing as quickly as possible.    
@@ -64,7 +64,7 @@ To use automated invoicing, log into Admin > System > Configuration > Radial - P
 
 Set Enabled to Yes, Save, and clear cache - this will enable Automated Invoicing.
 
-Reconfirm Age - when not using Automated Invoicing, the Radial PTF extension will perform a confirm funds check on an order when it is being shipped to ensure funds are still available from a previous authorization immediately prior to shipping.  When Magento is integrated into a Warehouse system, that check cannot happen since Magento is not involved with the final shipment; as such, the Reconfirm Age field is used to specify how many hours old an order can be before running a confirm funds check as part of the fraud release process.  So if Reconfirm Age is set to 4 hours and it takes more than 4 hours to get to a ready to ship state, the Radial PTF extension will confirm funds on the order before letting it get to a ready to ship state.
+Reconfirm Age - when not using Automated Invoicing, the Radial PTF extension will perform a confirm funds check on an order when it is being shipped to ensure funds are still available from a previous authorization immediately prior to shipping.  When Magento is integrated into a Warehouse system, that check cannot happen since Magento is not involved with the final shipment; as such, the Reconfirm Age field is used to specify how many hours old an order can be before running a confirm funds check as part of the fraud release process.  So if Reconfirm Age is set to 4 hours and it takes more than 4 hours to get to a ready to ship state, the Radial PTF extension will confirm funds on the order before letting it get to a ready to ship state (with the expectation that the warehouse integration would then pick up the order for fulfillment processing).
 
 # Disabling Radial Payment Methods and Fraud Processing
 
@@ -76,7 +76,7 @@ To stop using Radial PayPal Processing as an active Payment Method in Magento - 
 
 To disable Radial Fraud Processing, go to System > Configuration > Radial - Payments, Tax, Fraud and select the Fraud tab and set "Enabled" to No.  Save and clear cache.
 
-If all functionality of the Radial PTF extension needs to be fully disabled, please see the sections on Automated Invoicing for information about turning off Automated Invoicing and Setting Up Extension Cron Jobs for a list of cron jobs to disable.
+If all functionality of the Radial PTF extension needs to be fully disabled, please see the sections in this document on Automated Invoicing for information about turning off Automated Invoicing and Setting Up Extension Cron Jobs for a list of cron jobs to disable.
 
 ## Order Event Logging
 

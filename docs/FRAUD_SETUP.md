@@ -18,7 +18,7 @@ Some other settings of note:
 - Fraud Files Installed?: this is a sanity-check report to ensure that Radial's needed JavaScript files are actually loaded on the deployed-to server
 - Debug Mode: Should be set to "No" at all times and only set to "Yes" if one is actively debugging fraud integration with Radial.  Turning this on will send much of the fraud messaging to the store's system.log.
 - Maximum Fraud Transmission Retries: The number of times the Radial PTF extension will attempt to retry an operation involving transmitting fraud data to Radial (higher numbers will increase communication success rates, lower numbers will tie up the system less - recommendation default is 3)
-- Fraud Admin Email: An email address / distribution list to use for notifying an administrator of a problem
+- Fraud Admin Email: An email address / distribution list to use for notifying an administrator of a problem relating to fraud processing
 - Fraud Response Timeout: Number of milliseconds each Radial Fraud communication operation is allowed before timing out (higher numbers will increase communication success rates, lower numbers will tie up the system less - recommendation default is 20000)
 
 Additionally in this tab there is some informational reporting:

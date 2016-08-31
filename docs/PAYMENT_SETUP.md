@@ -11,7 +11,7 @@
 <img src="assets/payments_tab.png">
 
 - Maximum Payments Transmission Retries: The number of times the Radial PTF extension will attempt to retry an operation involving transmitting Payments data to Radial (higher numbers will increase communication success rates, lower numbers will tie up the system less - recommendation default is 3)
-- Payments Admin Email: An email address / distribution list to use for notifying an administrator of a problem
+- Payments Admin Email: An email address / distribution list to use for notifying an administrator of a problem related to payment processing
 - Payments Response Timeout: Number of milliseconds each Radial Payments communication operation is allowed before timing out (higher numbers will increase communication success rates, lower numbers will tie up the system less - recommendation default is 20000)
 
 Additionally in this tab there is some informational reporting:

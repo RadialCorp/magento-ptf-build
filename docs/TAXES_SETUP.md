@@ -17,8 +17,10 @@ To start using Radial Tax Processing go to Admin > System > Configuration > Radi
 There are a number of configuration options available from this tab, including:
 
 - Maximum Tax Transmission Retries: Indicates that number of times to retry a tax operation calling back to Radial (higher numbers will increase communication success rates, lower numbers will tie up the system less - recommendation default is 3)
-- Tax Payments Admin Email: An email address / distribution list to use for notifying an administrator of a problem
+- Tax Payments Admin Email: An email address / distribution list to use for notifying an administrator of a problem relating to tax transactions
 - Tax Payments Response Timeout: Number of milliseconds each Radial Tax communication operation is allowed before timing out (higher numbers will increase communication success rates, lower numbers will tie up the system less - recommendation default is 20000)
+- Printed Card SKU: The SKU of the product used for printed gift messaging cards
+- Printed Card Tax Class: The tax classification code to use for a printed gift card (this should be provided by Radial)
 
 Additionally in this tab there is some informational reporting:
 
@@ -35,7 +37,7 @@ Once done, click Save Config and, if necessary, clear cache.
 
 ## Notes About Taxes in Magento
 
-Note that the Radial PTF tax functionality does not necessarily preclude other tax extensions /default tax data in Magento.  It is important that a storefront not run additional tax extensions in their Magento installation that could cause conflicts with or affect the calculations of the Radial PTF tax extension.  It is also important to not have out-of-the-box Magento tax rules in place which could similarly conflict with Radial tax calculations.
+Note that the Radial PTF tax functionality does not necessarily preclude other tax extensions / default tax data in Magento.  It is important that a storefront not run additional tax extensions in their Magento installation that could cause conflicts with or affect the calculations of the Radial PTF tax extension.  It is also important to not have out-of-the-box Magento tax rules in place which could similarly conflict with Radial tax calculations.
 
 All tax calculations should be done via the Radial extension for it to work properly.  Do not try to help it with other extensions or administrative adjustments to how taxes are calculated.
 
