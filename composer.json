@@ -3,7 +3,7 @@
   "require": {
     "magento-hackathon/magento-composer-installer": "*",
     "radial/magento-fraud-risk": "1.0.68",
-    "radial/magento-payments" : "1.0.55"
+    "radial/magento-payments" : "1.0.56"
   },
   "extra": {
     "magento-deploystrategy": "copy",
