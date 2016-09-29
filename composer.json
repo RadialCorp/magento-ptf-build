@@ -2,8 +2,8 @@
   "name": "radial/magento-ptf-build",
   "require": {
     "magento-hackathon/magento-composer-installer": "*",
-    "radial/magento-fraud-risk": "1.0.72",
-    "radial/magento-payments" : "1.0.56"
+    "radial/magento-fraud-risk": "1.0.73",
+    "radial/magento-payments" : "1.0.57"
   },
   "extra": {
     "magento-deploystrategy": "copy",
