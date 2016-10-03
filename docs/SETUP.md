@@ -88,6 +88,7 @@ Example of setting an override cron expression in AOE scheduler:
 
 Enabling Cron Groups and running seperate cron processes to include / exclude the group will ensure that the cronjobs in the Radial PTF Extensions are non-blocking:
 
+<pre>
 <crontab>
     <jobs>
         <radial_eb2cfraud_retry_sendevent>
@@ -96,6 +97,7 @@ Enabling Cron Groups and running seperate cron processes to include / exclude th
         </radial_eb2cfraud_retry_sendevent>
     </jobs>
 </crontab>
+</pre>
 
 Example crontab entries:
 
