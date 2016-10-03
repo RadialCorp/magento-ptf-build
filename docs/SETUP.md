@@ -52,6 +52,26 @@ The radial\_tax\_retry\_invoice job retries the communication of tax invoice inf
 
 While these cron jobs are set to a cron *schedule* as part of the default installation, it is important to ensure that cron is actually set up and running for that schedule to work.  Default cron schedules can also be overridden if needed via any of the oft-used cron management extensions available (such as AOE Scheduler - https://github.com/AOEpeople/Aoe_Scheduler).  Please remember to cache-clear after setting up data in Magento admin when making adjustments to cron schedules.
 
+Enabling Cron Groups and running seperate cron processes to include / exclude the group will ensure that the cronjobs in the Radial PTF Extensions are non-blocking:
+
+```xml
+<crontab>
+    <jobs>
+        <radial_eb2cfraud_retry_sendevent>
+        ...
+            <groups>radial<groups>
+        </radial_eb2cfraud_retry_sendevent>
+    </jobs>
+</crontab>
+```
+
+Example crontab entries:
+
+<pre>
+* * * * * ! test -e /var/www/magento/maintenance.flag && /bin/bash /var/www/magento/scheduler_cron.sh --mode default --includeGroups radial
+* * * * * ! test -e /var/www/magento/maintenance.flag && /bin/bash /var/www/magento/scheduler_cron.sh --mode default --excludeGroups radial
+</pre>
+
 ## Setting Up Automated Invoicing
 
 What is Automated Invoicing?
