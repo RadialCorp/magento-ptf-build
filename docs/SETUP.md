@@ -86,6 +86,25 @@ Example of setting an override cron expression in AOE scheduler:
 
 <img src="assets/scheduling.png">
 
+Enabling Cron Groups and running seperate cron processes to include / exclude the group will ensure that the cronjobs in the Radial PTF Extensions are non-blocking:
+
+```xml
+<crontab>
+    <jobs>
+        <radial_eb2cfraud_retry_sendevent>
+        ...
+            <groups>radial<groups>
+        </radial_eb2cfraud_retry_sendevent>
+    </jobs>
+</crontab>
+```
+
+Example crontab entries:
+
+<pre>
+* * * * * ! test -e /var/www/magento/maintenance.flag && /bin/bash /var/www/magento/scheduler_cron.sh --mode default --includeGroups radial
+* * * * * ! test -e /var/www/magento/maintenance.flag && /bin/bash /var/www/magento/scheduler_cron.sh --mode default --excludeGroups radial
+</pre>
 
 ## Disabling Radial Payment Methods and Fraud Processing
 
