@@ -7,6 +7,7 @@
     "radial/magento-tax" : "1.0.96"
   },
   "extra": {
+    "magento-root-dir": ".",
     "magento-deploystrategy": "copy",
     "magento-force": true
   },
