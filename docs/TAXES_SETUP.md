@@ -35,6 +35,13 @@ The Radial PTF extension uses the defined Shipping Origin as specified in Magent
 
 Once done, click Save Config and, if necessary, clear cache.
 
+## Setting Radial Tax Code for Products in Catalog
+
+For Radial Tax calculations to be accurate, the appropriate Radial Tax Code needs to be assigned to each product in the catalog. This tax code is available as a product attribute with this extension.
+The tax code can be set manually via admin, in the “Prices” section of a Product’s information as shown below, or it can be uploaded by importing a product feed with the tax code attribute (existing Magento functionality). 
+
+<img src="assets/SettingTaxCode.png">
+
 ## Notes About Taxes in Magento
 
 Note that the Radial PTF tax functionality does not necessarily preclude other tax extensions / default tax data in Magento.  It is important that a storefront not run additional tax extensions in their Magento installation that could cause conflicts with or affect the calculations of the Radial PTF tax extension.  It is also important to not have out-of-the-box Magento tax rules in place which could similarly conflict with Radial tax calculations.
