@@ -5,7 +5,6 @@
 ## Contents
   * [Enabling Tax Processing](#enabling-tax-processing)
   * [Setting a Shipping Origin](#setting_a_shipping_origin)
-  * [Notes About Taxes in Magento](#notes-about-taxes-in-magento)
   * [Taxes on Gifting Options, Warranties, Customization, and Shipping Taxes](taxes_on_gifting_options_warranties_customization_and_shipping_taxes) 
 
 ## Enabling Tax Processing
@@ -27,6 +26,10 @@ Additionally in this tab there is some informational reporting:
  - "# of Tax Messages At Max Transmission Retries": indicates the number of tax messages which have reached their maximum number of retries and will not be retried unless an admin clicks the "Reset Tax Messages at Max Transmission" - clicking that button will force those messages to go through a full set of retries (as defined by the Maximum Tax Transmission Retries field).  Errors in transmission that cause this count to increase should also result in emails going to the Tax Payments Admin Email that is specified.  Small numbers accumulating here can often be addressed by clicking the Reset Tax MEssages at Max Transmissions button.  Admins should only click on the Purge Tax Message Retry Queue if instructed by Radial support.
  - "# of Tax Messages Waiting for Transmission Retry": this indicates the number of messages in the process of being retried.  In and of itself, a number greater than 0 here does not necessarily indicate a problem. 
 
+It is also important to *disable* the display of default tax information within Magento - this can be done by setting Display Zero Tax Subtotal to "No" for Order and Cart - setting in System -> Configuration -> Sales -> Tax under both Shopping Cart Display Settings and Order Invoices Credit Memo Display Settings.
+
+Note that the Radial PTF tax functionality does not necessarily suppress other tax extensions / default tax data in Magento.  It is important that a storefront not run additional tax extensions in their Magento installation that could cause conflicts with or affect the calculations of the Radial PTF tax extension.  It is also important to not have out-of-the-box Magento tax rules in place which could similarly conflict with Radial tax calculations.  All tax calculations should be done via the Radial extension for it to work properly.  Do not try to help it with other extensions or administrative adjustments to how taxes are calculated.
+
 Once done, click Save Config and, if necessary, clear cache.
 
 ## Setting a Shipping Origin
@@ -41,12 +44,6 @@ For Radial Tax calculations to be accurate, the appropriate Radial Tax Code need
 The tax code can be set manually via admin, in the “Prices” section of a Product’s information as shown below, or it can be uploaded by importing a product feed with the tax code attribute (existing Magento functionality). 
 
 <img src="assets/SettingTaxCode.png">
-
-## Notes About Taxes in Magento
-
-Note that the Radial PTF tax functionality does not necessarily preclude other tax extensions / default tax data in Magento.  It is important that a storefront not run additional tax extensions in their Magento installation that could cause conflicts with or affect the calculations of the Radial PTF tax extension.  It is also important to not have out-of-the-box Magento tax rules in place which could similarly conflict with Radial tax calculations.
-
-All tax calculations should be done via the Radial extension for it to work properly.  Do not try to help it with other extensions or administrative adjustments to how taxes are calculated.
 
 ## Taxes on Gifting Options, Warranties, Customization, and Shipping Taxes
 
