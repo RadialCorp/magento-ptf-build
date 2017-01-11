@@ -20,6 +20,10 @@ There are a number of configuration options available from this tab, including:
 - Tax Payments Response Timeout: Number of milliseconds each Radial Tax communication operation is allowed before timing out (higher numbers will increase communication success rates, lower numbers will tie up the system less - recommendation default is 20000)
 - Printed Card SKU: The SKU of the product used for printed gift messaging cards
 - Printed Card Tax Class: The tax classification code to use for a printed gift card (this should be provided by Radial)
+- Radial Taxes Effective From: The date time (m/d/y h:ii a) based either from the current time of tax call in the cart, or the orders create time that takes will be taken FROM.
+- Radial Taxes Effective To: The date time (m/d/y h:ii a) based either from the current time of tax call in the cart, or the orders create time that takes will be taken up TO.
+- Customer No Tax Disclaimer: The string displayed in the order review and order view pages that denote taxes were not taken for the order and will be calculated at a later time.
+- Accept Orders W/O Tax: A yes/no value that blocks orders from being taken if a successful Radial Tax Quotation has not be submitted and received. 
 
 Additionally in this tab there is some informational reporting:
 
