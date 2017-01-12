@@ -1,8 +1,8 @@
 {
     "name": "radial/test-ptf-build",
     "repositories": [
-        { "type": "vcs", "url": "https://github.com/RadialCorp/magento-ptf-build.git" },
-    },
+        { "type": "vcs", "url": "https://github.com/RadialCorp/magento-ptf-build.git" }
+    ],
     "require": {
         "radial/magento-ptf-build": "@dev",
         "magento-hackathon/magento-composer-installer": "^3"
