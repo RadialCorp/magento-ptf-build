@@ -1,7 +1,8 @@
 {
     "name": "radial/test-ptf-build",
     "repositories": [
-        { "type": "vcs", "url": "https://github.com/RadialCorp/magento-ptf-build.git" }
+        { "type": "vcs", "url": "https://github.com/RadialCorp/magento-ptf-build.git" },
+	{ "type": "composer", "url": "https://packages.firegento.com/" }
     ],
     "require": {
         "radial/magento-ptf-build": "@dev",
