@@ -5,7 +5,7 @@
 	{ "type": "composer", "url": "https://packages.firegento.com/" }
     ],
     "require": {
-        "radial/magento-ptf-build": "@dev",
+        "radial/magento-ptf-build": "dev-master",
         "magento-hackathon/magento-composer-installer": "^3"
     },
     "require-dev": {
